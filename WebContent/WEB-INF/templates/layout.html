@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">后台管理系统</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css"
+	href="/deploy/themes/default/live.css"
+	th:href="@{/deploy/themes/default/live.css}" />
+<link rel="stylesheet" type="text/css"
+	href="/deploy/themes/default/live.css"
+	th:href="@{/deploy/themes/default/live.css}" />
+		
+</head>
+<body>
+	<div class="mainwrapper" style="background-position: 0px 0px;">
+		<div class="leftpanel">
+			<div class="logopanel">
+				<h1>
+					<a href="dashboard.html">商户后台管理系统</a>
+				</h1>
+			</div>
+			<div class="datewidget" th:text="${#dates.format(new java.util.Date(),'yyyy-MM-dd HH:mm:ss')}"></div>
+			<div layout:fragment="leftmenu" class="left-menu-holder">left menu place holder</div>
+		</div>
+		<div class="rightpanel" style="margin-left: 260px;">
+			<div class="headerpanel">
+				<a href="" class="showmenu clicked"></a>
+				<div class="headerright">
+					<div layout:include="accountmenu::accountsettings" th:remove="tag">account menu</div>
+				</div>
+			</div>
+			<!--headerright-->
+			<div layout:fragment="breadcrumb">breadcrumb placeholder</div>
+			<div class="maincontent">
+				<div class="contentinner content-dashboard">
+					<div class="row-fluid">
+						<div layout:fragment="content">main content placeholder</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	    <div layout:include="footer::footer"></div>
+	</div>
+</body>
+</html>

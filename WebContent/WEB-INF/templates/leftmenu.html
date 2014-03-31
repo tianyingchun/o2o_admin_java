@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body layout:fragment="leftmenu">
+	<div class="leftmenu">
+		<!--/* for merchant menu list */-->
+		<ul th:if="${menuType}=='merchant'" class="nav nav-tabs nav-stacked">
+			<li class="nav-header">导航菜单</li>
+			<li><a href="staffs.html"> <span class="icon-user"></span>员工管理
+			</a></li>
+			<li class="dropdown active"><a href="products.html"> <span
+					class="icon-th-list"></span>产品管理
+			</a>
+				<ul>
+					<li><a class="active" href="productadd.html">添加产品</a></li>
+					<li><a href="products.html?published=1">已发布的产品</a></li>
+					<li><a href="products.html?deleted=1">已删除的产品</a></li>
+				</ul></li>
+			<li><a href="orderlist.html"> <span
+					class="icon-shopping-cart"></span>订单管理
+			</a></li>
+			<li class="nav-bottom"></li>
+		</ul>
+		<!--/* for administrator menu list */-->
+		<ul th:if="${menuType}=='admin'" class="nav nav-tabs nav-stacked">
+			<li class="nav-header">导航菜单</li>
+			<li class="dropdown"><a href="promotion.html"> <span
+					class="icon-th-list"></span>促销管理
+			</a>
+				<ul>
+					<li><a href="promotion.html">促销中的产品</a></li>
+					<li><a href="products.html">促销商品管理</a></li>
+				</ul></li>
+			<li class="dropdown active"><a href="merchantlist.html"> <span
+					class="icon-th-list"></span>商户管理
+			</a>
+				<ul>
+					<li><a href="merchantadd.html">添加商户</a></li>
+					<li><a class="active" href="merchantlist.html">商户列表</a></li>
+				</ul></li>
+			<li class="nav-bottom"></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body layout:fragment="breadcrumb">
+	<div class="breadcrumbwidget">
+		<ul class="breadcrumb">
+			<li><a href="/product">首页</a> <span class="divider">/</span>
+			</li>
+			<li th:if="${showGroupItem}=='true'"><a th:href="${'/'+groupLink}" th:text="${groupName}">产品管理</a> <span class="divider">/</span>
+			</li>
+			<li class="active" th:text="${navName}"></li>
+		</ul>
+	</div>
+	<div class="pagetitle">
+		<h1>添加产品</h1>
+		<span>添加新的产品数据</span>
+	</div>
+</body>
+</html>
