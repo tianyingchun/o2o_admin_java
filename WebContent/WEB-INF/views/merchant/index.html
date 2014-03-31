@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>产品列表</title>
+</head>
+<body>
+	<div layout:fragment="leftmenu">
+		<div layout:include="leftmenu::leftmenu"
+			th:with="menuType='merchant',menuItemName='merchant-index'"
+			th:remove="tag"></div>
+	</div>
+	<div layout:fragment="breadcrumb">
+		<div layout:include="breadcrumb::breadcrumb"
+			th:with="navName='产品列表',groupName='产品管理',groupLink='merchant/index',showGroupItem='true'"
+			th:remove="tag"></div>
+	</div>
+	<div layout:fragment="subtitle">
+		<h1>产品列表</h1>
+		<span>查看所有的产品列表数据</span>
+	</div>
+	<div layout:fragment="content" th:remove="tag">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>图片</th>
+					<th>名称</th>
+					<th>状态</th>
+					<th>发布日期</th>
+					<th>发布人</th>
+					<th class="center">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>ID 0001</td>
+					<td class="thumb"><img src="" width="60" height="60" /></td>
+					<td><a href=""> <strong class="product-name">商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</strong>
+					</a></td>
+					<td>未审核</td>
+					<td>2013-4-25</td>
+					<td><a href="">admin</a></td>
+
+					<td class="center"><a href="" class="btn"> <span
+							class="icon-edit"></span>Edit
+					</a> <a href="" class="btn"> <span class="icon-remove"></span>Delete
+					</a></td>
+				</tr>
+				<tr>
+					<td>ID 0001</td>
+					<td class="thumb"><img src="" width="60" height="60" /></td>
+					<td><a href=""> <strong class="product-name">商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</strong>
+					</a></td>
+					<td>未审核</td>
+					<td>2013-4-25</td>
+					<td><a href="">admin</a></td>
+
+					<td class="center"><a href="" class="btn"> <span
+							class="icon-edit"></span>Edit
+					</a> <a href="" class="btn"> <span class="icon-remove"></span>Delete
+					</a></td>
+				</tr>
+				<tr>
+					<td>ID 0001</td>
+					<td class="thumb"><img src="" width="60" height="60" /></td>
+					<td><a href=""> <strong class="product-name">商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</strong>
+					</a></td>
+					<td>未审核</td>
+					<td>2013-4-25</td>
+					<td><a href="">admin</a></td>
+
+					<td class="center"><a href="" class="btn"> <span
+							class="icon-edit"></span>Edit
+					</a> <a href="" class="btn"> <span class="icon-remove"></span>Delete
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

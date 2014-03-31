@@ -11,15 +11,15 @@
 			<li class="nav-header">导航菜单</li>
 			<li><a href="staffs.html"> <span class="icon-user"></span>员工管理
 			</a></li>
-			<li class="dropdown active"><a href="products.html"> <span
+			<li th:class="${menuItemName} !='merchant-orderlist'?'dropdown active':'dropdown'" class=""><a th:href="@{/merchant/index}"> <span
 					class="icon-th-list"></span>产品管理
 			</a>
 				<ul>
-					<li><a class="active" href="productadd.html">添加产品</a></li>
-					<li><a href="products.html?published=1">已发布的产品</a></li>
-					<li><a href="products.html?deleted=1">已删除的产品</a></li>
+					<li><a th:class="${menuItemName} =='merchant-create'?'active':''" th:href="@{/merchant/create}">添加产品</a></li>
+					<li><a th:class="${menuItemName} =='merchant-published'?'active':''" th:href="@{/merchant/publishedproducts}">已发布的产品</a></li>
+					<li><a th:class="${menuItemName} =='merchant-deleted'?'active':''" th:href="@{/merchant/deletedproducts}">已删除的产品</a></li>
 				</ul></li>
-			<li><a href="orderlist.html"> <span
+			<li th:class="${menuItemName} =='merchant-orderlist'?'active':''"><a th:href="@{/merchant/orderlist}"> <span
 					class="icon-shopping-cart"></span>订单管理
 			</a></li>
 			<li class="nav-bottom"></li>
