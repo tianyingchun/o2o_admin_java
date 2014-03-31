@@ -4,7 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout">
 <head>
-<title>添加新产品</title>
+<title>修改产品</title>
 </head>
 <body>
 	<div layout:fragment="leftmenu">
@@ -18,8 +18,8 @@
 			th:remove="tag"></div>
 	</div>
 	<div layout:fragment="subtitle">
-		<h1>添加产品</h1>
-		<span>添加新的产品数据</span>
+		<h1>修改产品</h1>
+		<span>修改产品数据</span>
 	</div>
 	<div layout:fragment="content" th:remove="tag">
 		<h4 class="widgettitle nomargin shadowed">新产品信息录入表</h4>
@@ -27,26 +27,26 @@
 			<form class="stdform stdform2" enctype="multipart/form-data"
 				method="post"
 				action="http://192.168.12.40:8080/easyTake/productweb/add">
-				<input type="hidden" value="111" name="merchantId" id="merchantId" />
-				<input type="hidden" value="111" name="productId" id="productId" />
+				<input type="hidden" value="111" name="merchantId" id="merchantId">
+				<input type="hidden" value="111" name="productId" id="productId">
 				<input type="hidden" value="" name="deletedpicids"
-					id="deletedpicids" />
+					id="deletedpicids">
 
 				<p style="border-top: 0;">
 					<label>产品名称</label> <span class="field"> <input type="text"
 						placeholder="请输入产品名称" name="productname" id="productname"
-						class="input-xxlarge" />
+						class="input-xxlarge">
 					</span>
 				</p>
 
 				<p>
 					<label>原价</label> <span class="field"> <input type="number"
-						placeholder="请输入产品原价" name="oldprice" id="oldprice" />&nbsp;(RMB)
+						placeholder="请输入产品原价" name="oldprice" id="oldprice">&nbsp;(RMB)
 					</span>
 				</p>
 				<p>
 					<label>促销价</label> <span class="field"> <input type="number"
-						placeholder="请输入产品促销价" name="price" id="price" />&nbsp;(RMB)
+						placeholder="请输入产品促销价" name="price" id="price">&nbsp;(RMB)
 					</span>
 				</p>
 				<p>
@@ -57,50 +57,68 @@
 				</p>
 				<p>
 					<label>库存</label> <span class="field"> <input type="number"
-						name="stock" id="stock" />
+						name="stock" id="stock">
 					</span>
 				</p>
 				<p>
 					<label>是否发布</label> <span class="field"> <input
-						type="checkbox" name="published" id="published" />
+						type="checkbox" name="published" id="published">
 					</span>
 				</p>
 				<p>
 					<label>产品图片预览</label> <span id="picture-preview"
-						class="field preview"> <span class="item"><span
-							data-id="111" class="delete">remove</span> </span> <span class="item">
-							<span data-id="112" class="delete">remove</span>
-					</span> <span class="item"><span data-id="113" class="delete">remove</span>
+						class="field preview"> <span class="item"> <img
+							src=""> <span data-id="111" class="delete">remove</span>
+					</span> <span class="item"> <img src=""> <span data-id="112"
+							class="delete">remove</span>
+					</span> <span class="item"> <img src=""> <span data-id="113"
+							class="delete">remove</span>
 					</span>
 					</span>
 				</p>
 				<p>
 					<label>产品图片</label> <span class="field"> <a href="#"
 						class="btn" id="add_new_picture"> <span class="icon-plus"></span>Add
-					</a> <br /> <input type="file" name="file" id="picture1" /> <br />
+					</a> <br> <input type="file" name="file" id="picture1"> <br>
 					</span>
 				</p>
 				<p class="stdformbutton">
-					<input type="submit" class="btn btn-primary" value="保存修改" />
+					<input type="submit" class="btn btn-primary" value="保存修改">
 				</p>
 			</form>
 		</div>
 	</div>
 	<script layout:fragment="script">
-		seajs.use("jquery", function($) {
-		    var pictureid = 2;
-		    $(function() {
-		        $("#add_new_picture").on("click", function(e) {
-		            var $this = $(this);
-		            var fileHtml = '<input type="file" name="file" id="{picture}" /><br />';
-		            fileHtml = fileHtml.replace(/{picture}/g, "picture" + pictureid);
-		            var $newFile = $(fileHtml);
-		            $this.parent().append($newFile);
-		            pictureid++;
-		            return false;
-		        });
-		    });
-		});
+	seajs.use("jquery", function($) {
+	    var pictureid = 2;
+	    var deleteIds = [];
+	    $(function() {
+	        var $picpreview = $("#picture-preview");
+	        $picpreview.find("span.item").hover(function(e) {
+	            var $span = $(this);
+	            $span.find(".delete").show();
+
+	        }, function(e) {
+	            var $span = $(this);
+	            $span.find(".delete").hide();
+	        });
+	        $picpreview.on("click", "span.delete", function(e) {
+	        	var $this =$(this);
+	        	deleteIds.push($this.data("id"));
+	        	$("#deletedpicids").val(deleteIds.join(","));
+	        	$this.parent("span.item").remove();
+	        });
+	        $("#add_new_picture").on("click", function(e) {
+	            var $this = $(this);
+	            var fileHtml = '<input type="file" name="file" id="{picture}"><br />';
+	            fileHtml = fileHtml.replace(/{picture}/g, "picture" + pictureid);
+	            var $newFile = $(fileHtml);
+	            $this.parent().append($newFile);
+	            pictureid++;
+	            return false;
+	        });
+	    });
+	});
 	</script>
 </body>
 </html>

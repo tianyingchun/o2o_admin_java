@@ -16,6 +16,10 @@ public class MerchantController extends BaseController {
 	public String creat() {
 		return "merchant/create";
 	}
+	@RequestMapping(method = RequestMethod.GET, value = "/edit")
+	public String edit() {
+		return "merchant/edit";
+	}
 	@RequestMapping(method = RequestMethod.GET, value = "/publishedproducts")
 	public String published() {
 		return "merchant/publishedproducts";
