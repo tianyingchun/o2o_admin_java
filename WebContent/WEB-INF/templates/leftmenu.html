@@ -11,15 +11,24 @@
 			<li class="nav-header">导航菜单</li>
 			<li><a href="staffs.html"> <span class="icon-user"></span>员工管理
 			</a></li>
-			<li th:class="${menuItemName} !='merchant-orderlist'?'dropdown active':'dropdown'" class=""><a th:href="@{/merchant/index}"> <span
+			<li
+				th:class="${menuItemName} !='merchant-orderlist'?'dropdown active':'dropdown'"
+				class=""><a class="item" th:href="@{/merchant/index}"> <span
 					class="icon-th-list"></span>产品管理
 			</a>
 				<ul>
-					<li><a th:class="${menuItemName} =='merchant-create'?'active':''" th:href="@{/merchant/create}">添加产品</a></li>
-					<li><a th:class="${menuItemName} =='merchant-published'?'active':''" th:href="@{/merchant/publishedproducts}">已发布的产品</a></li>
-					<li><a th:class="${menuItemName} =='merchant-deleted'?'active':''" th:href="@{/merchant/deletedproducts}">已删除的产品</a></li>
+					<li><a
+						th:class="${menuItemName} =='merchant-create'?'active':''"
+						th:href="@{/merchant/create}">添加产品</a></li>
+					<li><a
+						th:class="${menuItemName} =='merchant-published'?'active':''"
+						th:href="@{/merchant/publishedproducts}">已发布的产品</a></li>
+					<li><a
+						th:class="${menuItemName} =='merchant-deleted'?'active':''"
+						th:href="@{/merchant/deletedproducts}">已删除的产品</a></li>
 				</ul></li>
-			<li th:class="${menuItemName} =='merchant-orderlist'?'active':''"><a th:href="@{/merchant/orderlist}"> <span
+			<li th:class="${menuItemName} =='merchant-orderlist'?'active':''"><a
+				th:href="@{/merchant/orderlist}"> <span
 					class="icon-shopping-cart"></span>订单管理
 			</a></li>
 			<li class="nav-bottom"></li>
@@ -27,14 +36,14 @@
 		<!--/* for administrator menu list */-->
 		<ul th:if="${menuType}=='admin'" class="nav nav-tabs nav-stacked">
 			<li class="nav-header">导航菜单</li>
-			<li class="dropdown"><a href="promotion.html"> <span
+			<li class="dropdown"><a class="item" href="promotion.html"> <span
 					class="icon-th-list"></span>促销管理
 			</a>
 				<ul>
 					<li><a href="promotion.html">促销中的产品</a></li>
 					<li><a href="products.html">促销商品管理</a></li>
 				</ul></li>
-			<li class="dropdown active"><a href="merchantlist.html"> <span
+			<li class="dropdown active"><a class="item" href="merchantlist.html"> <span
 					class="icon-th-list"></span>商户管理
 			</a>
 				<ul>
@@ -44,5 +53,24 @@
 			<li class="nav-bottom"></li>
 		</ul>
 	</div>
+	<script th:inline="javascript">
+		seajs.use("jquery", function($) {
+			$(function() {
+				$(".leftmenu li.dropdown a.item").on("click", function(e) {
+					var $this = $(this).next("ul");
+					if ($this.hasClass("hide")) {
+						$this.slideDown("fast", function() {
+							$this.removeClass("hide");
+						});
+					} else {
+						$this.slideUp("fast", function() {
+							$this.addClass("hide");
+						});
+					}
+					e.preventDefault();
+				});
+			});
+		});
+	</script>
 </body>
 </html>
