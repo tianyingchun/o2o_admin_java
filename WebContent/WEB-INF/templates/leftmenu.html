@@ -9,10 +9,11 @@
 		<!--/* for merchant menu list */-->
 		<ul th:if="${menuType}=='merchant'" class="nav nav-tabs nav-stacked">
 			<li class="nav-header">导航菜单</li>
-			<li><a href="staffs.html"> <span class="icon-user"></span>员工管理
+			<li th:class="${menuSection} =='account'?'active':''"><a
+				th:href="@{/merchant/account/detail}"> <span class="icon-user"></span>商户信息
 			</a></li>
 			<li
-				th:class="${menuItemName} !='merchant-orderlist'?'dropdown active':'dropdown'"
+				th:class="(${menuSection} =='product' )?'dropdown active':'dropdown'"
 				class=""><a class="item" th:href="@{/merchant/index}"> <span
 					class="icon-th-list"></span>产品管理
 			</a>
@@ -27,7 +28,7 @@
 						th:class="${menuItemName} =='merchant-deleted'?'active':''"
 						th:href="@{/merchant/deletedproducts}">已删除的产品</a></li>
 				</ul></li>
-			<li th:class="${menuItemName} =='merchant-orderlist'?'active':''"><a
+			<li th:class="${menuSection} =='order'?'active':''"><a
 				th:href="@{/merchant/orderlist}"> <span
 					class="icon-shopping-cart"></span>订单管理
 			</a></li>
@@ -36,19 +37,23 @@
 		<!--/* for administrator menu list */-->
 		<ul th:if="${menuType}=='admin'" class="nav nav-tabs nav-stacked">
 			<li class="nav-header">导航菜单</li>
-			<li class="dropdown"><a class="item" href="promotion.html"> <span
+			<li><a class="item" href="promotion.html"> <span
 					class="icon-th-list"></span>促销管理
 			</a>
 				<ul>
 					<li><a href="promotion.html">促销中的产品</a></li>
 					<li><a href="products.html">促销商品管理</a></li>
 				</ul></li>
-			<li class="dropdown active"><a class="item" href="merchantlist.html"> <span
+			<li
+				th:class="(${menuSection} =='merchant' )?'dropdown active':'dropdown'"><a
+				class="item" th:href="@{/admin/merchant/index}"> <span
 					class="icon-th-list"></span>商户管理
 			</a>
 				<ul>
-					<li><a href="merchantadd.html">添加商户</a></li>
-					<li><a class="active" href="merchantlist.html">商户列表</a></li>
+					<li><a th:class="${menuItemName} =='admin-create'?'active':''"
+						th:href="@{/admin/merchant/create}">添加商户</a></li>
+					<li><a th:class="${menuItemName} =='admin-index'?'active':''"
+						class="active" th:href="@{/admin/merchant/list}">商户列表</a></li>
 				</ul></li>
 			<li class="nav-bottom"></li>
 		</ul>
@@ -58,7 +63,7 @@
 			$(function() {
 				$(".leftmenu li.dropdown a.item").on("click", function(e) {
 					var $this = $(this).next("ul");
-					if ($this.hasClass("hide")) {
+					if ($this.hasClass("hide") || !$this.is(":visible")) {
 						$this.slideDown("fast", function() {
 							$this.removeClass("hide");
 						});

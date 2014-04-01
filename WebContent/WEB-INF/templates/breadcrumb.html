@@ -7,7 +7,7 @@
 <body layout:fragment="breadcrumb">
 	<div class="breadcrumbwidget">
 		<ul class="breadcrumb">
-			<li><a th:href="@{/merchant/index}">首页</a> <span class="divider">/</span>
+			<li><a th:href="@{${groupType}=='admin'?'/admin':'/merchant/index'}">首页</a> <span class="divider">/</span>
 			</li>
 			<li th:if="${showGroupItem}=='true'"><a th:href="@{'/'+${groupLink}}" th:text="${groupName}">产品管理</a> <span class="divider">/</span>
 			</li>

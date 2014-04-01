@@ -12,21 +12,30 @@ public class MerchantController extends BaseController {
 	public String index() {
 		return "merchant/index";
 	}
+
 	@RequestMapping(method = RequestMethod.GET, value = "/create")
 	public String creat() {
 		return "merchant/create";
 	}
+
 	@RequestMapping(method = RequestMethod.GET, value = "/edit")
 	public String edit() {
 		return "merchant/edit";
 	}
+
 	@RequestMapping(method = RequestMethod.GET, value = "/publishedproducts")
 	public String published() {
 		return "merchant/publishedproducts";
 	}
+
 	@RequestMapping(method = RequestMethod.GET, value = "/deletedproducts")
 	public String deleted() {
 		return "merchant/deletedproducts";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/account/detail")
+	public String accountDetail() {
+		return "merchant/accountdetail";
 	}
 
 }

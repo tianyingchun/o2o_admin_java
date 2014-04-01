@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>商户账户信息预览</title>
+</head>
+<body>
+	<div layout:fragment="leftmenu">
+		<div layout:include="leftmenu::leftmenu"
+			th:with="menuType='merchant',menuSection='account',menuItemName='merchant-account'"
+			th:remove="tag"></div>
+	</div>
+	<div layout:fragment="breadcrumb">
+		<div layout:include="breadcrumb::breadcrumb"
+			th:with="navName='商户信息',groupName='商户信息',groupLink='merchant/index',showGroupItem='true'"
+			th:remove="tag"></div>
+	</div>
+	<div layout:fragment="subtitle">
+		<h1>商户信息</h1>
+		<span>查看当前商户详情</span>
+	</div>
+	<div layout:fragment="content" th:remove="tag">
+		<h4 class="widgettitle nomargin shadowed">商户详情</h4>
+		<div
+			class="widgetcontent account-detail stdform stdform2 bordered shadowed nopadding">
+			<p style="border-top: 0;">
+				<label>商户名称</label> <span class="field"> 商户名称 </span>
+			</p>
+
+			<p>
+				<label>联系地址</label> <span class="field"> 商户联系地址 </span>
+			</p>
+			<p>
+				<label>Email</label> <span class="field">商户Email </span>
+			</p>
+			<p>
+				<label>商户ID </label> <span class="field">商户接入ID </span>
+			</p>
+			<p>
+				<label>商户KEY</label> <span class="field"> 商户接入KEY </span>
+			</p>
+			<p>
+				<label>是否发布</label> <span class="field"> 正常 </span>
+			</p>
+		</div>
+	</div>
+	<script layout:fragment="script">
+		seajs
+				.use(
+						"jquery",
+						function($) {
+							var pictureid = 2;
+							$(function() {
+								$("#add_new_picture")
+										.on(
+												"click",
+												function(e) {
+													var $this = $(this);
+													var fileHtml = '<input type="file" name="file" id="{picture}" /><br />';
+													fileHtml = fileHtml
+															.replace(
+																	/{picture}/g,
+																	"picture"
+																			+ pictureid);
+													var $newFile = $(fileHtml);
+													$this.parent().append(
+															$newFile);
+													pictureid++;
+													return false;
+												});
+							});
+						});
+	</script>
+</body>
+</html>

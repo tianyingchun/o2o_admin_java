@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/merchant")
-public class OrderController {
+public class OrderController extends BaseController{
 	@RequestMapping(method = RequestMethod.GET, value = "/orderlist")
 	public String orderlist() {
 		return "merchant/orderlist";

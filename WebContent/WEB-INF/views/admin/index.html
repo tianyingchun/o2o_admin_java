@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>管理员商户列表</title>
+</head>
+<body>
+	<div layout:fragment="leftmenu">
+		<div layout:include="leftmenu::leftmenu"
+			th:with="menuType='admin',menuSection='merchant',menuItemName='admin-index'" th:remove="tag"></div>
+	</div>
+	<div layout:fragment="breadcrumb">
+		<div layout:include="breadcrumb::breadcrumb"
+			th:with="navName='商户列表',groupType='admin',groupName='商户管理',groupLink='admin/merchant/list',showGroupItem='true'"
+			th:remove="tag"></div>
+	</div>
+	<div layout:fragment="subtitle">
+		<h1>商户列表</h1>
+		<span>查看商户列表数据</span>
+	</div>
+	<div layout:fragment="content" th:remove="tag">
+		<div class="searchwidget">
+			<form action="orderlist.html" method="get">
+				<div class="input-append">
+					<select name="status">
+						<option value="0">--选择过滤条件--</option>
+						<option value="passed">已经审核</option>
+						<option value="unpassed">未审核</option>
+					</select> <label>商户名称：</label> <input name="tel" type="text"
+						class="span2 search-query" placeholder="输入商户名称..." />
+					<button type="submit" class="btn">
+						<span class="icon-search"></span>
+					</button>
+				</div>
+			</form>
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>商户号</th>
+					<th>商户名称</th>
+					<th>联系电话</th>
+					<th>状态</th>
+					<th>创建时间</th>
+					<th class="center">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>MerchantId 0001</td>
+					<td>商户名称</td>
+					<td>13764826689</td>
+					<td>已审核</td>
+					<td>2014-03-12</td>
+					<td class="center"><a href="merchantedit.html?merchantid=1"
+						class="btn"> <span class="icon-edit"></span>编辑
+					</a></td>
+				</tr>
+				<tr>
+					<td>MerchantId 0001</td>
+					<td>商户名称</td>
+					<td>13764826689</td>
+					<td>已审核</td>
+					<td>2014-03-12</td>
+					<td class="center"><a href="merchantedit.html?merchantid=2"
+						class="btn"> <span class="icon-edit"></span>编辑
+					</a></td>
+				</tr>
+				<tr>
+					<td>MerchantId 0001</td>
+					<td>商户名称</td>
+					<td>13764826689</td>
+					<td>已审核</td>
+					<td>2014-03-12</td>
+					<td class="center"><a href="merchantedit.html?merchantid=3"
+						class="btn"> <span class="icon-edit"></span>编辑
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
