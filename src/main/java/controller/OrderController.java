@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/merchant")
+@RequestMapping("/order")
 public class OrderController extends BaseController{
 	@RequestMapping(method = RequestMethod.GET, value = "/orderlist")
 	public String orderlist() {
-		return "merchant/orderlist";
+		return "order/orderlist";
 	}
 }	

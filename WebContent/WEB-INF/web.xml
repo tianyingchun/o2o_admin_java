@@ -23,18 +23,6 @@
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
-	<!-- jsp-inheritance-prefix, jsp-inheritance-suffix can be omitted. -->
-
-	<context-param>
-		<param-name>jsp-inheritance-prefix</param-name>
-		<param-value>/WEB-INF/layouts/</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>jsp-inheritance-suffix</param-name>
-		<param-value>.jsp</param-value>
-	</context-param>
-
 	<servlet-mapping>
 		<servlet-name>MyDispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
