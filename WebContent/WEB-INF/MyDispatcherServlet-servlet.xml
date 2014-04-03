@@ -13,8 +13,8 @@
 	<mvc:annotation-driven />
 
 	<!-- don't capture static files -->
-	<mvc:resources location="/WEB-INF/deploy/" mapping="/deploy/**" />
-
+	<mvc:resources location="/WEB-INF/deploy/" mapping="/deploy/**" /> 
+	
 	<bean id="templateResolver_layouts"
 		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
 		<property name="prefix" value="/WEB-INF/templates/" />
@@ -23,7 +23,7 @@
 		<property name="characterEncoding" value="utf-8" />
 		<!-- Template cache is true by default. Set to false if you want -->
 		<!-- templates to be automatically updated when modified. -->
-		<property name="cacheable" value="false" />
+		<property name="cacheable" value="true" />
 		<property name="order" value="0" />
 	</bean>
 	<bean id="templateResolver_views"
@@ -34,10 +34,10 @@
 		<property name="characterEncoding" value="UTF-8" />
 		<!-- Template cache is true by default. Set to false if you want -->
 		<!-- templates to be automatically updated when modified. -->
-		<property name="cacheable" value="false" />
+		<property name="cacheable" value="true" />
 		<property name="order" value="1" />
 	</bean>
-	<bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
+	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
 		<!-- <property name="templateResolver" ref="templateResolver_layouts" /> -->
 		<!-- config multi tempate resolver -->
 		<property name="templateResolvers">
@@ -50,10 +50,11 @@
 		<property name="additionalDialects">
 			<set>
 				<bean class="nz.net.ultraq.thymeleaf.LayoutDialect" />
+				<bean class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect" />
 			</set>
 		</property>
 	</bean>
-	<bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
+	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
 		<property name="templateEngine" ref="templateEngine" />
 		<property name="characterEncoding" value="UTF-8" />
 		<property name="contentType" value="text/html; charset=UTF-8" />

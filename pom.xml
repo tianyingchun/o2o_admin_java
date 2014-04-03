@@ -9,6 +9,9 @@
 	<description>o2e administrator platform</description>
 	<properties>
 		<spring-version>4.0.2.RELEASE</spring-version>
+		<sprint-security-version>3.2.3.RELEASE</sprint-security-version>
+		<thymeleaf.version>2.1.2.RELEASE</thymeleaf.version>
+		<thymeleafspringsecurity3.version>2.1.1.RELEASE</thymeleafspringsecurity3.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -47,19 +50,36 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>3.2.2.RELEASE</version>
+			<version>${sprint-security-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>3.2.2.RELEASE</version>
-			<scope>test</scope>
+			<version>${sprint-security-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${sprint-security-version}</version>
 		</dependency>
 		<!-- thymeleaf mvc spring3 -->
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
-			<artifactId>thymeleaf-spring3</artifactId>
-			<version>2.1.2.RELEASE</version>
+			<artifactId>thymeleaf</artifactId>
+			<version>${thymeleaf.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring4</artifactId>
+			<version>${thymeleaf.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity3</artifactId>
+			<version>${thymeleafspringsecurity3.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<!-- thymeleaf dialect for layout template -->
 		<dependency>
@@ -67,6 +87,7 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+
 		<!-- compress html response start -->
 		<dependency>
 			<groupId>com.yahoo.platform.yui</groupId>

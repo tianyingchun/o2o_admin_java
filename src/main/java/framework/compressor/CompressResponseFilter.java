@@ -1,4 +1,4 @@
-package framework;
+package framework.compressor;
 
 import java.io.IOException;
 

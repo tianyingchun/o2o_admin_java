@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
@@ -17,7 +18,9 @@
 					Sign in to get you started!</span>
 			</h1>
 			<div class="loginwrapperinner">
-				<form id="loginform" action="login.html" method="post">
+				<div th:if="${param.error}">Invalid username and password.</div>
+				<div th:if="${param.logout}">You have been logged out.</div>
+				<form id="loginform" th:action="@{/login}" method="post">
 					<p class="animate4 bounceIn">
 						<input type="text" id="username" name="username"
 							value="administrator" placeholder="Username" />
