@@ -21,28 +21,28 @@
         <div class="widgetcontent account-detail stdform stdform2 bordered shadowed nopadding">
             <p style="border-top: 0;">
                 <label>商户名称</label>
-                <span class="field">商户名称</span>
+                <span class="field" th:text="${merchant.name}">商户名称</span>
             </p>
 
             <p>
                 <label>联系地址</label>
-                <span class="field">商户联系地址</span>
+                <span class="field" th:text="${merchant.address}">商户联系地址</span>
             </p>
             <p>
                 <label>Email</label>
-                <span class="field">商户Email</span>
+                <span class="field" th:text="${merchant.email}">商户Email</span>
             </p>
             <p>
                 <label>商户ID</label>
-                <span class="field">商户接入ID</span>
+                <span class="field" th:text="${merchant.getAppId()}">商户接入ID</span>
             </p>
             <p>
                 <label>商户KEY</label>
-                <span class="field">商户接入KEY</span>
+                <span class="field" th:text="${merchant.getAppKey()}">商户接入KEY</span>
             </p>
             <p>
                 <label>是否发布</label>
-                <span class="field">正常</span>
+                <span class="field" th:text="${merchant.getPublished()?'available':'diabled'}">正常</span>
             </p>
         </div>
     </div>

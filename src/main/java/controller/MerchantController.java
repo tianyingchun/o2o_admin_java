@@ -1,8 +1,11 @@
 package controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import vm.MerchantInfo;
 
 @Controller
 @RequestMapping("/merchant")
@@ -34,7 +37,16 @@ public class MerchantController extends BaseController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/account/detail")
-	public String accountDetail() {
+	public String accountDetail(Model model) {
+		MerchantInfo merchantInfo = new MerchantInfo();
+		merchantInfo.setName("merchant name");
+		merchantInfo.setAddress("merchant address");
+		merchantInfo.setEmail("merchant email");
+		merchantInfo.setAppId("merchant appid");
+		merchantInfo.setAppKey("merchant appkey");
+		merchantInfo.setPublished(true);
+				
+		model.addAttribute("merchant", merchantInfo);
 		return "merchant/accountdetail";
 	}
 
