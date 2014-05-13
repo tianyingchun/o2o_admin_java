@@ -5,15 +5,22 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SecurityController extends BaseController {
 	// Login form
 	@RequestMapping("/login")
-	public String login() {
+	public String login(Model model,@RequestParam(value="error", required=false) boolean error) {
+		if (error) {
+			model.addAttribute("loginError", true);
+		}
 		return "login";
 	}
-
+	@RequestMapping("/logout")
+	public String logout() {
+		return "login";
+	}
 	// Login form with error
 	@RequestMapping("/login-error")
 	public String loginError(Model model) {
@@ -40,7 +47,7 @@ public class SecurityController extends BaseController {
 		}
 		errorMessage.append("</ul>");
 		model.addAttribute("errorMessage", errorMessage.toString());
-		return "error.html";
+		return "error";
 	}
 
 	/** Substitute 'less than' and 'greater than' symbols by its HTML entities. */

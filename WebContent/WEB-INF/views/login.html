@@ -18,16 +18,15 @@
 					Sign in to get you started!</span>
 			</h1>
 			<div class="loginwrapperinner">
-				<div th:if="${param.error}">Invalid username and password.</div>
-				<div th:if="${param.logout}">You have been logged out.</div>
-				<form id="loginform" th:action="@{/login}" method="post">
+				<div th:if="${loginError}" style="color:red; margin-bottom: 5px;">Invalid username and password.</div>
+				<form id="loginform" th:action="@{/j_spring_security_check}" method="post">
 					<p class="animate4 bounceIn">
 						<input type="text" id="username" name="username"
-							value="administrator" placeholder="Username" />
+							value="user" placeholder="Username" />
 					</p>
 					<p class="animate5 bounceIn">
 						<input type="password" id="password" name="password"
-							placeholder="Password" value="administrator" />
+							placeholder="Password" value="password" />
 					</p>
 					<p class="animate6 bounceIn">
 						<button class="btn btn-default btn-block">Submit</button>

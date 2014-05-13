@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8" />
@@ -7,8 +8,9 @@
 <body layout:fragment="accountsettings">
 	<!--dropdown-->
 	<div class="dropdown userinfo">
+		<a class="logout" style="color: #fff;" th:href="@{/j_spring_security_logout}">Logout</a> | 
 		<a class="dropdown-toggle" data-toggle="dropdown" data-target="#"
-			href="#">Hi, administrator! <b class="caret"></b></a>
+			href="#">Hi, <span sec:authentication="name">Bob</span>! <b class="caret"></b></a>
 		<ul class="dropdown-menu">
 			<li><a href="#"> <span class="icon-edit"></span>Edit Profile
 			</a></li>

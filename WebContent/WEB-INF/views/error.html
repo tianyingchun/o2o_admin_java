@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="css/main.css" th:href="@{/css/main.css}" />
     </head>
     <body>
-        <h1 th:text="${errorCode}">404</h1>
+        <h1 th:text="${errorCode}">500</h1>
         <p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
         <a href="index.html" th:href="@{/index.html}">Back to Home Page</a>
     </body>
